@@ -1,0 +1,11 @@
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Core/bin/Debug/net8.0/IINET.UI.Core.deps.json
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Core/bin/Debug/net8.0/IINET.UI.Core.dll
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Core/bin/Debug/net8.0/IINET.UI.Core.pdb
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Core/obj/Debug/net8.0/IINET.UI.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Core/obj/Debug/net8.0/IINET.UI.Core.AssemblyInfoInputs.cache
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Core/obj/Debug/net8.0/IINET.UI.Core.AssemblyInfo.cs
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Core/obj/Debug/net8.0/IINET.UI.Core.csproj.CoreCompileInputs.cache
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Core/obj/Debug/net8.0/IINET.UI.Core.dll
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Core/obj/Debug/net8.0/refint/IINET.UI.Core.dll
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Core/obj/Debug/net8.0/IINET.UI.Core.pdb
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Core/obj/Debug/net8.0/ref/IINET.UI.Core.dll

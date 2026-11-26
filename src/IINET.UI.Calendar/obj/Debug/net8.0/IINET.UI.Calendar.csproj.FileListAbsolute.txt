@@ -1,0 +1,17 @@
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/IINET.UI.Calendar.csproj.AssemblyReference.cache
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/Avalonia/Resources.Inputs.cache
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/Avalonia/resources
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/IINET.UI.Calendar.GeneratedMSBuildEditorConfig.editorconfig
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/IINET.UI.Calendar.AssemblyInfoInputs.cache
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/IINET.UI.Calendar.AssemblyInfo.cs
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/IINET.UI.Calendar.csproj.CoreCompileInputs.cache
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/IINET.UI.Calendar.dll
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/refint/IINET.UI.Calendar.dll
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/IINET.UI.Calendar.pdb
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/bin/Debug/net8.0/IINET.UI.Calendar.deps.json
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/bin/Debug/net8.0/IINET.UI.Calendar.dll
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/bin/Debug/net8.0/IINET.UI.Calendar.pdb
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/bin/Debug/net8.0/IINET.UI.Core.dll
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/bin/Debug/net8.0/IINET.UI.Core.pdb
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/IINET.UI.683B49A6.Up2Date
+/home/ilya/Projects/avalonia_lib/IINET.UI/src/IINET.UI.Calendar/obj/Debug/net8.0/ref/IINET.UI.Calendar.dll

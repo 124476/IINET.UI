@@ -1,0 +1,121 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:IINET.UI.Calendar.Controls"
+    xmlns:primitives="using:Avalonia.Controls.Primitives">
+
+    <ControlTheme
+        x:Key="{x:Type controls:Calendar}"
+        TargetType="controls:Calendar">
+
+        <Setter Property="CalendarBackground" Value="#FFFFFF"/>
+        <Setter Property="CalendarBorderBrush" Value="#D1D5DB"/>
+        <Setter Property="CalendarBorderThickness" Value="1"/>
+
+        <Setter Property="CornerRadius" Value="12"/>
+
+        <Setter Property="Template">
+            <ControlTemplate>
+
+                <Border
+                    Background="{TemplateBinding CalendarBackground}"
+                    BorderBrush="{TemplateBinding CalendarBorderBrush}"
+                    BorderThickness="{TemplateBinding CalendarBorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+
+                    <Grid >
+                        <Grid
+    RowDefinitions="Auto,*">
+
+    <Border
+        x:Name="PART_Header"
+        Grid.Row="0"
+        Background="{TemplateBinding HeaderBackground}"
+        CornerRadius="12,12,0,0"
+        Padding="12,8">
+
+        <Grid ColumnDefinitions="40,*,40">
+
+            <Button
+                x:Name="PART_PreviousButton"
+                Grid.Column="0"
+                Background="Transparent"
+                BorderThickness="0"
+                CornerRadius="6"
+                Padding="6"
+                Cursor="Hand">
+
+                <TextBlock
+                    x:Name="PART_PreviousGlyph"
+                    Text="‹"
+                    FontSize="{TemplateBinding NavigationFontSize}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+
+            </Button>
+
+            <TextBlock
+                x:Name="PART_MonthTitle"
+                Grid.Column="1"
+                FontSize="{TemplateBinding MonthTitleFontSize}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+
+            <Button
+                x:Name="PART_NextButton"
+                Grid.Column="2"
+                Background="Transparent"
+                BorderThickness="0"
+                CornerRadius="6"
+                Padding="6"
+                Cursor="Hand">
+
+                <TextBlock
+                    x:Name="PART_NextGlyph"
+                    Text="›"
+                    FontSize="{TemplateBinding NavigationFontSize}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+
+            </Button>
+
+        </Grid>
+    </Border>
+
+    <!-- =====================================================
+         Тело: дни недели + дни месяца
+         ===================================================== -->
+    <Grid
+        Grid.Row="1"
+        Margin="12,4,12,12"
+        RowDefinitions="Auto,*"
+        RowSpacing="10">
+
+        <primitives:UniformGrid
+            x:Name="PART_Weekdays"
+            Grid.Row="0"
+            Columns="7"
+            Rows="1"/>
+
+        <primitives:UniformGrid
+            x:Name="PART_Days"
+            Grid.Row="1"
+            Columns="7"
+            Rows="6"
+            ColumnSpacing="4"
+            RowSpacing="4"/>
+
+    </Grid>
+
+</Grid>
+
+                    </Grid>
+
+                </Border>
+
+            </ControlTemplate>
+        </Setter>
+
+    </ControlTheme>
+
+</ResourceDictionary>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>IINET.UI.Demo</id>
+    <version>1.0.0</version>
+    <authors>IINET.UI.Demo</authors>
+    <description>Package Description</description>
+    <repository type="git" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="IINET.UI.Calendar" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Avalonia" version="11.3.23" exclude="Build,Analyzers" />
+        <dependency id="Avalonia.Desktop" version="11.3.23" exclude="Build,Analyzers" />
+        <dependency id="Avalonia.Fonts.Inter" version="11.3.23" exclude="Build,Analyzers" />
+        <dependency id="Avalonia.Themes.Fluent" version="11.3.23" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="/home/ilya/Projects/avalonia_lib/IINET.UI/samples/IINET.UI.Demo/bin/Release/net8.0/IINET.UI.Demo.runtimeconfig.json" target="lib/net8.0/IINET.UI.Demo.runtimeconfig.json" />
+    <file src="/home/ilya/Projects/avalonia_lib/IINET.UI/samples/IINET.UI.Demo/bin/Release/net8.0/IINET.UI.Demo.dll" target="lib/net8.0/IINET.UI.Demo.dll" />
+  </files>
+</package>

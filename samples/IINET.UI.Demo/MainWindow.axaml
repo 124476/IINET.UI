@@ -1,0 +1,101 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:calendar="using:IINET.UI.Calendar.Controls"
+    xmlns:demo="using:IINET.UI.Demo"
+    x:Class="IINET.UI.Demo.MainWindow"
+    x:DataType="demo:MainWindow"
+    Title="IINET.UI Demo"
+    Width="900"
+    Height="700">
+
+    <Grid
+        Margin="24"
+        RowDefinitions="Auto,*">
+
+        <TextBlock
+            Grid.Row="0"
+            Text="IINET.UI Calendar"
+            FontSize="26"
+            FontWeight="Bold"
+            HorizontalAlignment="Center"/>
+
+        <calendar:Calendar
+            Grid.Row="1"
+            Margin="0,20,0,0"
+
+            MinWidth="320"
+            MinHeight="360"
+
+            HeaderBackground="#6366F1"
+    
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+
+            CalendarBackground="#FAFAFF"
+            CalendarBorderBrush="#CBD5E1"
+            CalendarBorderThickness="1"
+
+            MonthTitleFontSize="19"
+            WeekdayFontSize="13"
+            DayFontSize="11"
+            NavigationFontSize="28"
+            DayContentFontSize="11"
+
+            NavigationForeground="#334155"
+            NavigationHoverForeground="#FFFFFF"
+            NavigationBackground="#F1F5F9"
+            NavigationHoverBackground="#6366F1"
+
+            FirstDayOfWeek="Monday"
+            WeekdayLabels="Пн,Вт,Ср,Чт,Пт,Сб,Вс"
+
+            MonthNames="Январь|Февраль|Март|Апрель|Май|Июнь|Июль|Август|Сентябрь|Октябрь|Ноябрь|Декабрь"
+
+            DayBackground="#FFFFFF"
+            DayForeground="#1F2937"
+
+            SelectedDayBackground="#6366F1"
+            SelectedDayForeground="#FFFFFF"
+
+            DayHoverBackground="#DBEAFE"
+            DayHoverForeground="#1D4ED8"
+
+            SelectedDayHoverBackground="#4338CA"
+            SelectedDayHoverForeground="#FFFFFF"
+
+            OutsideMonthDayBackground="#F9FAFB"
+            OutsideMonthDayForeground="#9CA3AF"
+
+            WeekdayForeground="#64748B"
+
+            TodayBorderColor="#F97316"
+            TodayBorderThickness="1"
+
+            DayContents="{Binding CalendarMarks}">
+
+            <calendar:Calendar.DayContentTemplate>
+                <DataTemplate x:DataType="demo:CalendarMark">
+                    <StackPanel
+                        Spacing="2"
+                        HorizontalAlignment="Center">
+
+                        <TextBlock
+                            Text="{Binding Emoji}"
+                            FontSize="12"
+                            HorizontalAlignment="Center"/>
+
+                        <TextBlock
+                            Text="{Binding Title}"
+                            FontSize="9"
+                            HorizontalAlignment="Center"/>
+
+                    </StackPanel>
+                </DataTemplate>
+            </calendar:Calendar.DayContentTemplate>
+
+        </calendar:Calendar>
+
+    </Grid>
+
+</Window>
