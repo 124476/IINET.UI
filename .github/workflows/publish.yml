@@ -1,0 +1,42 @@
+name: Publish NuGet Package
+
+on:
+  push:
+    tags:
+      - 'v*'        
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: NuGet login (OIDC -> temporary API key)
+        id: nuget-login
+        uses: NuGet/login@v1
+        with:
+          user: 124476
+
+      - name: Pack
+        run: |
+          dotnet pack src/IINET.UI.Calendar/IINET.UI.Calendar.csproj \
+            -c Release \
+            -o ./output
+
+      - name: Push to NuGet
+        run: |
+          dotnet nuget push ./output/*.nupkg \
+            --api-key ${{ steps.nuget-login.outputs.NUGET_API_KEY }} \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
