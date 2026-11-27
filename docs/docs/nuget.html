@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="NuGet и публикация библиотеки IINET.UI"><title>NuGet и публикация — IINET.UI</title><link rel="stylesheet" href="assets/styles.css"><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"></head>
+<body><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">UI</span><span>IINET.UI <small>docs</small></span></a><button class="menu-toggle" data-menu-toggle>Меню</button></header>
+<div class="layout"><aside class="sidebar">
+  <div class="side-title">IINET.UI</div>
+  <nav class="side-nav" aria-label="Общая документация">
+    <a href="index.html">Главная</a>
+  </nav>
+
+  <div class="side-title">Общее</div>
+  <nav class="side-nav" aria-label="Общая документация IINET.UI">
+    <a href="installation.html">Установка и подключение</a>
+    <a href="nuget.html">NuGet и публикация</a>
+    <a href="development.html">Сборка и разработка</a>
+  </nav>
+
+  <div class="side-title">Компоненты</div>
+  <nav class="side-nav side-nav-nested" aria-label="Компоненты IINET.UI">
+    <a href="calendar.html">Calendar</a>
+    <a class="sub-link" href="day-content.html">Содержимое дней</a>
+    <a class="sub-link" href="appearance.html">Внешний вид</a>
+  </nav>
+</aside><main class="content"><div class="breadcrumb"><a href="index.html">IINET.UI</a> / Общее / NuGet и публикация</div><span class="eyebrow">PACKAGING / NUGET</span><h1>NuGet и публикация</h1>
+<p class="lead">Пользователь должен иметь возможность установить весь набор компонентов одной командой: <code>dotnet add package IINET.UI</code>. Для этого используется агрегирующий (meta) NuGet-пакет.</p>
+<div class="callout warning"><strong>Статус: планируется.</strong><p>Пакет <code>IINET.UI</code> ещё не опубликован. Команда установки станет рабочей после публикации компонентных пакетов и агрегирующего пакета в NuGet или другом настроенном NuGet feed.</p></div>
+<h2>Как это будет выглядеть для пользователя</h2>
+<pre><code>dotnet add package IINET.UI</code></pre>
+<p>Потребитель не указывает каждый компонент отдельно. NuGet скачивает агрегирующий пакет и его зависимости.</p>
+<h2>Схема зависимостей</h2>
+<pre><code>IINET.UI                 (агрегирующий пакет)
+└── IINET.UI.Calendar    (компонент)
+    └── IINET.UI.Core   (общее ядро)</code></pre>
+<p>В дальнейшем агрегирующий пакет будет дополнен зависимостями на другие компоненты, например <code>IINET.UI.Charts</code> или <code>IINET.UI.Gantt</code>. Пользователь по-прежнему будет устанавливать только <code>IINET.UI</code>.</p>
+<h2>Пример проекта агрегирующего пакета</h2>
+<p>Шаблон находится в <code>packaging/IINET.UI/IINET.UI.csproj.example</code>. В нём отключается включение выходной сборки и добавляется зависимость на пакет календаря:</p>
+<pre><code>&lt;Project Sdk="Microsoft.NET.Sdk"&gt;
+  &lt;PropertyGroup&gt;
+    &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;
+    &lt;PackageId&gt;IINET.UI&lt;/PackageId&gt;
+    &lt;Version&gt;0.1.0&lt;/Version&gt;
+    &lt;Description&gt;Aggregate package for IINET.UI components.&lt;/Description&gt;
+    &lt;IsPackable&gt;true&lt;/IsPackable&gt;
+    &lt;IncludeBuildOutput&gt;false&lt;/IncludeBuildOutput&gt;
+  &lt;/PropertyGroup&gt;
+  &lt;ItemGroup&gt;
+    &lt;PackageReference Include="IINET.UI.Calendar" /&gt;
+  &lt;/ItemGroup&gt;
+&lt;/Project&gt;</code></pre>
+<p>Так как в репозитории используется Central Package Management, версия <code>IINET.UI.Calendar</code> должна быть объявлена в общем <code>Directory.Packages.props</code>, например:</p>
+<pre><code>&lt;PackageVersion Include="IINET.UI.Calendar" Version="0.1.0" /&gt;</code></pre>
+<h2>Порядок публикации</h2>
+<ol class="inline-list">
+<li>Собрать и опубликовать <code>IINET.UI.Core</code>.</li>
+<li>Собрать и опубликовать <code>IINET.UI.Calendar</code>, проверив, что его .nuspec содержит зависимость на Core и необходимые пакеты Avalonia.</li>
+<li>Собрать агрегирующий <code>IINET.UI</code>, который зависит от компонентных пакетов.</li>
+<li>Опубликовать агрегирующий пакет.</li>
+<li>Проверить установку в чистом тестовом Avalonia-приложении командой <code>dotnet add package IINET.UI</code>.</li>
+</ol>
+<h2>Почему не одна DLL?</h2>
+<p>Решение может состоять из нескольких NuGet-пакетов, но пользователь не обязан устанавливать каждый. Агрегирующий пакет — это небольшой пакет зависимостей: он сообщает NuGet, какие компонентные пакеты нужно установить транзитивно. Такой подход упрощает рост библиотеки без объединения всего исходного кода в одну сборку.</p>
+<h2>Версии</h2>
+<p>Рекомендуется поддерживать согласованную версию релиза для Core, Calendar и агрегирующего пакета (например, <code>0.1.0</code>) либо явно фиксировать совместимые диапазоны зависимостей. NuGet поддерживает диапазоны версий; их нужно задавать осознанно и проверять в итоговом .nuspec.</p>
+<footer class="page-footer"><span>IINET.UI documentation</span><a href="index.html">На главную ↑</a></footer></main></div><script src="assets/site.js"></script></body></html>

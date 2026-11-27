@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Документация IINET.UI — библиотеки переиспользуемых UI-компонентов для Avalonia.">
+  <title>IINET.UI — документация</title>
+  <link rel="stylesheet" href="assets/styles.css"><link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">UI</span><span>IINET.UI <small>docs</small></span></a>
+  
+  <button class="menu-toggle" data-menu-toggle aria-label="Открыть меню">Меню</button>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+  <div class="side-title">IINET.UI</div>
+  <nav class="side-nav" aria-label="Общая документация">
+    <a href="index.html">Главная</a>
+  </nav>
+
+  <div class="side-title">Общее</div>
+  <nav class="side-nav" aria-label="Общая документация IINET.UI">
+    <a href="installation.html">Установка и подключение</a>
+    <a href="development.html">Сборка и разработка</a>
+  </nav>
+
+  <div class="side-title">Компоненты</div>
+  <nav class="side-nav side-nav-nested" aria-label="Компоненты IINET.UI">
+    <a href="calendar.html">Calendar</a>
+    <a class="sub-link" href="day-content.html">Содержимое дней</a>
+    <a class="sub-link" href="appearance.html">Внешний вид</a>
+  </nav>
+</aside>
+  <main class="content">
+    <section class="hero">
+      <h1>Переиспользуемые UI-компоненты. Одна библиотека.</h1>
+      <p class="lead">IINET.UI — набор компонентов для Avalonia-приложений.</p>
+    </section>
+
+    <div class="callout warning"><strong>Проект в разработке.</strong></div>
+
+    <h2>Что входит в библиотеку</h2>
+    <div class="grid-cards">
+      <article class="card"><div class="card-icon">01</div><h3>Core</h3><p>Общий код и инфраструктура, которые могут использовать несколько компонентов.</p><span class="badge planned">Развивается</span></article>
+      <article class="card"><div class="card-icon">02</div><h3>Calendar</h3><p>Календарь с выбором даты, настройкой оформления и произвольным содержимым ячеек.</p><span class="badge">Первый компонент</span></article>
+      <article class="card"><div class="card-icon">03</div><h3>Другие компоненты</h3><p>Графики, часы, диаграмма Ганта и дополнительные контролы — направления дальнейшего развития.</p><span class="badge planned">Запланировано</span></article>
+    </div>
+
+    <h2>Быстрый старт в текущем репозитории</h2>
+    <p>Пока пакеты не опубликованы, подключайте проект календаря напрямую:</p>
+    <pre><code>dotnet add YourApp.csproj reference path/to/IINET.UI.Calendar.csproj</code></pre>
+    <p>В уже существующем репозитории Demo:</p>
+    <pre><code>dotnet add samples/IINET.UI.Demo reference src/IINET.UI.Calendar/IINET.UI.Calendar.csproj</code></pre>
+    <p>После подключения нужно включить ресурс темы <code>avares://IINET.UI.Calendar/Themes/Generic.axaml</code> в <code>App.axaml</code>. Полная инструкция приведена в разделе <a href="installation.html">Установка и подключение</a>.</p>
+
+    <h2>Установка всей библиотеки одной командой — цель проекта</h2>
+    <pre><code>dotnet add package IINET.UI</code></pre>
+    <p>Для этого будет опубликован агрегирующий пакет <code>IINET.UI</code>, который зависит от отдельных пакетов компонентов. Например, <code>IINET.UI.Calendar</code> подтянет <code>IINET.UI.Core</code> как транзитивную зависимость. Сейчас это план публикации, а не доступная команда из nuget.org.</p>
+    <p><a href="nuget.html">Как устроить единый пакет IINET.UI →</a></p>
+
+    <h2>Разделы документации</h2>
+    <ul class="inline-list">
+      <li><a href="calendar.html">Calendar</a> — свойства, события и поведение.</li>
+      <li><a href="day-content.html">Содержимое дней</a> — добавление Button, TextBlock, StackPanel и других контролов.</li>
+      <li><a href="appearance.html">Внешний вид</a> — цвета, размеры, заголовок и подписи.</li>
+      <li><a href="development.html">Сборка и разработка</a> — сборка решения и проверка изменений.</li>
+    </ul>
+    <footer class="page-footer"><span>IINET.UI documentation</span><span>Документация обновляется вместе с API.</span></footer>
+  </main>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

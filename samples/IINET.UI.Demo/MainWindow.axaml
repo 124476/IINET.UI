@@ -7,7 +7,9 @@
     x:DataType="demo:MainWindow"
     Title="IINET.UI Demo"
     Width="900"
-    Height="700">
+    Height="700"
+    MinWidth="800"
+    MinHeight="600">
 
     <Grid
         Margin="24"
@@ -24,9 +26,6 @@
             Grid.Row="1"
             Margin="0,20,0,0"
 
-            MinWidth="320"
-            MinHeight="360"
-
             HeaderBackground="#6366F1"
     
             HorizontalAlignment="Stretch"
@@ -36,11 +35,11 @@
             CalendarBorderBrush="#CBD5E1"
             CalendarBorderThickness="1"
 
-            MonthTitleFontSize="19"
-            WeekdayFontSize="13"
-            DayFontSize="11"
+            MonthTitleFontSize="25"
+            WeekdayFontSize="19"
+            DayFontSize="17"
             NavigationFontSize="28"
-            DayContentFontSize="11"
+            DayContentFontSize="17"
 
             NavigationForeground="#334155"
             NavigationHoverForeground="#FFFFFF"
@@ -73,27 +72,6 @@
             TodayBorderThickness="1"
 
             DayContents="{Binding CalendarMarks}">
-
-            <calendar:Calendar.DayContentTemplate>
-                <DataTemplate x:DataType="demo:CalendarMark">
-                    <StackPanel
-                        Spacing="2"
-                        HorizontalAlignment="Center">
-
-                        <TextBlock
-                            Text="{Binding Emoji}"
-                            FontSize="12"
-                            HorizontalAlignment="Center"/>
-
-                        <TextBlock
-                            Text="{Binding Title}"
-                            FontSize="9"
-                            HorizontalAlignment="Center"/>
-
-                    </StackPanel>
-                </DataTemplate>
-            </calendar:Calendar.DayContentTemplate>
-
         </calendar:Calendar>
 
     </Grid>

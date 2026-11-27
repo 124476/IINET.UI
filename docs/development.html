@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Сборка и разработка — документация IINET.UI"><title>Сборка и разработка — IINET.UI</title><link rel="stylesheet" href="assets/styles.css"><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"></head>
+<body><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">UI</span><span>IINET.UI <small>docs</small></span></a><button class="menu-toggle" data-menu-toggle>Меню</button></header>
+<div class="layout"><aside class="sidebar">
+  <div class="side-title">IINET.UI</div>
+  <nav class="side-nav" aria-label="Общая документация">
+    <a href="index.html">Главная</a>
+  </nav>
+
+  <div class="side-title">Общее</div>
+  <nav class="side-nav" aria-label="Общая документация IINET.UI">
+    <a href="installation.html">Установка и подключение</a>
+    <a href="development.html">Сборка и разработка</a>
+  </nav>
+
+  <div class="side-title">Компоненты</div>
+  <nav class="side-nav side-nav-nested" aria-label="Компоненты IINET.UI">
+    <a href="calendar.html">Calendar</a>
+    <a class="sub-link" href="day-content.html">Содержимое дней</a>
+    <a class="sub-link" href="appearance.html">Внешний вид</a>
+  </nav>
+</aside><main class="content"><div class="breadcrumb"><a href="index.html">IINET.UI</a> / Общее / Сборка и разработка</div><h1>Сборка и разработка</h1>
+<p class="lead">Инструкция для локальной работы с репозиторием IINET.UI.</p>
+<h2>Требования</h2>
+<ul class="inline-list"><li>.NET SDK, соответствующий версии, закреплённой в репозитории (если добавлен <code>global.json</code>).</li><li>NuGet.org или другой настроенный источник пакетов.</li><li>Linux, Windows или macOS для соответствующей desktop-платформы Avalonia.</li></ul>
+<h2>Восстановление и сборка</h2>
+<pre><code>dotnet restore
+dotnet build -m:1</code></pre>
+<h2>Запуск демонстрационного приложения</h2>
+<pre><code>dotnet run --project samples/IINET.UI.Demo</code></pre>
+<h2>Управление версиями пакетов</h2>
+<p>Версии NuGet централизованы в <code>Directory.Packages.props</code>. При обновлении Avalonia проверяйте согласованность основных пакетов: <code>Avalonia</code>, <code>Avalonia.Desktop</code> и используемой темы. После изменения версии выполняйте чистую сборку и запускайте Demo.</p>
+<h2>Проверка темы компонента</h2>
+<p>Если календарь отображается без шаблона, проверьте включение <code>Themes/**/*.axaml</code> как <code>AvaloniaResource</code> в проекте компонента и наличие <code>ResourceInclude</code> в ресурсах приложения. Документация Avalonia отдельно описывает библиотечные темы для templated controls.</p>
+<h2>Полезные команды</h2>
+<pre><code>dotnet --list-sdks
+dotnet --list-runtimes
+dotnet sln list
+dotnet list package
+dotnet clean
+dotnet build -m:1</code></pre>
+<h2>Перед pull request</h2>
+<ul class="inline-list"><li>Убедитесь, что проект собирается.</li><li>Проверьте Demo вручную.</li><li>Обновите документацию, если изменился публичный API.</li><li>Не добавляйте папки <code>bin/</code> и <code>obj/</code> в Git.</li><li>Не заявляйте совместимость с версиями Avalonia, на которых не проводилась проверка.</li></ul>
+<footer class="page-footer"><span>IINET.UI documentation</span><a href="index.html">На главную ↑</a></footer></main></div><script src="assets/site.js"></script></body></html>

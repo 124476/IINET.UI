@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Содержимое дней — документация IINET.UI"><title>Содержимое дней — IINET.UI</title><link rel="stylesheet" href="assets/styles.css"><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"></head>
+<body><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">UI</span><span>IINET.UI <small>docs</small></span></a><button class="menu-toggle" data-menu-toggle>Меню</button></header>
+<div class="layout"><aside class="sidebar">
+  <div class="side-title">IINET.UI</div>
+  <nav class="side-nav" aria-label="Общая документация">
+    <a href="index.html">Главная</a>
+  </nav>
+
+  <div class="side-title">Общее</div>
+  <nav class="side-nav" aria-label="Общая документация IINET.UI">
+    <a href="installation.html">Установка и подключение</a>
+    <a href="development.html">Сборка и разработка</a>
+  </nav>
+
+  <div class="side-title">Компоненты</div>
+  <nav class="side-nav" aria-label="Компоненты IINET.UI">
+    <a href="calendar.html">Calendar</a>
+    <a class="sub-link" href="day-content.html">Содержимое дней</a>
+    <a class="sub-link" href="appearance.html">Внешний вид</a>
+  </nav>
+</aside><main class="content"><div class="breadcrumb"><a href="index.html">IINET.UI</a> / Calendar / Содержимое дней</div><h1>Содержимое дней</h1>
+<p class="lead">Каждая запись <code>CalendarDayContent</code> связывает календарную дату с дополнительным содержимым. Для визуальных элементов рекомендуется использовать фабрику, возвращающую новый экземпляр контрола.</p>
+<div class="callout warning"><strong>Не переиспользуйте один экземпляр Control в разных ячейках.</strong><p>У Avalonia Visual может быть только один visual parent. При перестроении календаря ранее размещённый экземпляр нельзя прикрепить повторно. Поэтому фабрика должна возвращать новый объект на каждый вызов.</p></div>
+<h2>TextBlock</h2>
+<pre><code>CalendarDayContent.FromControl(
+  new DateTime(2026, 11, 4),
+  () =&gt; new TextBlock { Text = "📝 Заметка" });</code></pre>
+<h2>Button</h2>
+<pre><code>CalendarDayContent.FromControl(
+  new DateTime(2026, 11, 12),
+  () =&gt; new Button { Content = "Открыть" });</code></pre>
+<h2>StackPanel с несколькими элементами</h2>
+<pre><code>CalendarDayContent.FromControl(
+  new DateTime(2026, 11, 14),
+  () =&gt; new StackPanel
+  {
+    Children =
+    {
+      new TextBlock { Text = "📚" },
+      new Button { Content = "Учёба" }
+    }
+  });</code></pre>
+<h2>Несколько элементов в одной дате</h2>
+<pre><code>CalendarMarks.Add(CalendarDayContent.FromControl(
+  new DateTime(2026, 11, 26),
+  () =&gt; new TextBlock { Text = "🎉" }));
+
+CalendarMarks.Add(CalendarDayContent.FromControl(
+  new DateTime(2026, 11, 26),
+  () =&gt; new TextBlock { Text = "Праздник" }));</code></pre>
+<h2>Коллекция и Binding</h2>
+<pre><code>public ObservableCollection&lt;CalendarDayContent&gt; CalendarMarks { get; } = new();
+
+public MainWindow()
+{
+    InitializeComponent();
+    DataContext = this;
+}</code></pre>
+<pre><code>&lt;calendar:Calendar DayContents="{Binding CalendarMarks}" /&gt;</code></pre>
+<p>При использовании <code>ObservableCollection</code> календарь получает уведомление об изменении коллекции и обновляет ячейки. Для интерактивных вложенных элементов (например, кнопок и флажков) настройте обработку pointer-событий так, чтобы их нажатия не запускали выбор родительской даты.</p>
+<h2>Какие элементы можно размещать</h2>
+<p>Подойдёт любой контрол Avalonia, например <code>TextBlock</code>, <code>Button</code>, <code>CheckBox</code>, <code>StackPanel</code>, <code>Grid</code>, <code>Border</code>, фигуры или собственный компонент.</p>
+<footer class="page-footer"><span>IINET.UI documentation</span><a href="index.html">На главную ↑</a></footer></main></div><script src="assets/site.js"></script></body></html>

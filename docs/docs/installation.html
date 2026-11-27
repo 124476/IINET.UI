@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Установка и подключение библиотеки IINET.UI"><title>Установка и подключение IINET.UI — IINET.UI</title><link rel="stylesheet" href="assets/styles.css"><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"></head>
+<body><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">UI</span><span>IINET.UI <small>docs</small></span></a><button class="menu-toggle" data-menu-toggle>Меню</button></header>
+<div class="layout"><aside class="sidebar">
+  <div class="side-title">IINET.UI</div>
+  <nav class="side-nav" aria-label="Общая документация">
+    <a href="index.html">Главная</a>
+  </nav>
+
+  <div class="side-title">Общее</div>
+  <nav class="side-nav" aria-label="Общая документация IINET.UI">
+    <a href="installation.html">Установка и подключение</a>
+    <a href="development.html">Сборка и разработка</a>
+  </nav>
+
+  <div class="side-title">Компоненты</div>
+  <nav class="side-nav side-nav-nested" aria-label="Компоненты IINET.UI">
+    <a href="calendar.html">Calendar</a>
+    <a class="sub-link" href="day-content.html">Содержимое дней</a>
+    <a class="sub-link" href="appearance.html">Внешний вид</a>
+  </nav>
+</aside><main class="content"><div class="breadcrumb"><a href="index.html">IINET.UI</a> / Общее / Установка и подключение</div><h1>Установка и подключение IINET.UI</h1>
+<p class="lead">IINET.UI состоит из отдельных проектов и компонентов. Пока NuGet-пакеты не опубликованы, подключайте нужный проект напрямую; после публикации агрегирующего пакета библиотеку можно будет установить одной командой.</p>
+<div class="callout warning"><strong>Важно:</strong> команда <code>dotnet add package IINET.UI</code> пока не работает из nuget.org — агрегирующий пакет ещё не выпущен.</div>
+<h2>1. Подключение проекта из репозитория</h2>
+<pre><code>dotnet add YourApp.csproj reference path/to/IINET.UI.Calendar.csproj</code></pre>
+<p>В репозитории IINET.UI проект Demo подключается так:</p>
+<pre><code>dotnet add samples/IINET.UI.Demo reference src/IINET.UI.Calendar/IINET.UI.Calendar.csproj</code></pre>
+<h2>2. Зависимости приложения</h2>
+<p>Потребительское приложение должно использовать совместимые версии <code>Avalonia</code>, <code>Avalonia.Desktop</code> и выбранной темы. Текущая цель проекта — <code>net8.0</code>; нижняя версия Avalonia, на которую ориентируется разработка, — 11.0.0. Совместимость с конкретным выпуском следует проверять сборкой и запуском.</p>
+<h2>3. Подключение темы компонента Calendar</h2>
+<p>В проекте <code>IINET.UI.Calendar.csproj</code> убедитесь, что ресурс темы включён:</p>
+<pre><code>&lt;ItemGroup&gt;
+  &lt;AvaloniaResource Include="Themes/**/*.axaml" /&gt;
+&lt;/ItemGroup&gt;</code></pre>
+<p>В <code>App.axaml</code> приложения подключите словарь:</p>
+<pre><code>&lt;Application.Resources&gt;
+  &lt;ResourceDictionary&gt;
+    &lt;ResourceDictionary.MergedDictionaries&gt;
+      &lt;ResourceInclude
+        Source="avares://IINET.UI.Calendar/Themes/Generic.axaml" /&gt;
+    &lt;/ResourceDictionary.MergedDictionaries&gt;
+  &lt;/ResourceDictionary&gt;
+&lt;/Application.Resources&gt;</code></pre>
+<p>Не удаляйте существующую секцию <code>Application.Styles</code>: тема календаря и тема приложения решают разные задачи.</p>
+<h2>4. Использование Calendar в AXAML</h2>
+<pre><code>&lt;Window
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:calendar="using:IINET.UI.Calendar.Controls"
+  x:Class="YourApp.MainWindow"&gt;
+
+  &lt;calendar:Calendar
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch"
+    SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+    DayContents="{Binding CalendarMarks}" /&gt;
+&lt;/Window&gt;</code></pre>
+<h2>5. Установка всей библиотеки</h2>
+<pre><code>dotnet add package IINET.UI</code></pre>
+<p>Когда агрегирующий пакет будет опубликован, он подтянет компонентные пакеты как NuGet-зависимости. Подробности — в разделе <a href="nuget.html">NuGet и единая установка</a>.</p>
+<footer class="page-footer"><span>IINET.UI documentation</span><a href="index.html">На главную ↑</a></footer></main></div><script src="assets/site.js"></script></body></html>

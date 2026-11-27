@@ -41,6 +41,16 @@ public class Calendar : TemplatedControl
     // Chrome / navigation appearance
     // =========================================================
 
+    public static readonly StyledProperty<IBrush?> CalendarTopBorderBrushProperty =
+        AvaloniaProperty.Register<Calendar, IBrush?>(
+            nameof(CalendarTopBorderBrush),
+            new SolidColorBrush(Color.Parse("#6366F1")));
+
+    public static readonly StyledProperty<double> CalendarTopBorderThicknessProperty =
+        AvaloniaProperty.Register<Calendar, double>(
+            nameof(CalendarTopBorderThickness),
+            4.0);
+
     public static readonly StyledProperty<IBrush?> CalendarBackgroundProperty =
         AvaloniaProperty.Register<Calendar, IBrush?>(
             nameof(CalendarBackground),
@@ -254,6 +264,18 @@ public class Calendar : TemplatedControl
     {
         get => GetValue(CalendarBorderThicknessProperty);
         set => SetValue(CalendarBorderThicknessProperty, value);
+    }
+
+    public IBrush? CalendarTopBorderBrush
+    {
+        get => GetValue(CalendarTopBorderBrushProperty);
+        set => SetValue(CalendarTopBorderBrushProperty, value);
+    }
+
+    public double CalendarTopBorderThickness
+    {
+        get => GetValue(CalendarTopBorderThicknessProperty);
+        set => SetValue(CalendarTopBorderThicknessProperty, value);
     }
 
     public double NavigationFontSize
@@ -492,8 +514,6 @@ public class Calendar : TemplatedControl
 
     private void HookNavigation()
     {
-        // В XAML кнопки — Border. Поддерживаем и Border, и Button,
-        // чтобы не зависеть от конкретной реализации в теме.
         if (_previousButton is Button prevBtn)
             prevBtn.Click += OnPreviousMonthClick;
         else if (_previousButton is not null)
