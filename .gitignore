@@ -1,0 +1,78 @@
+
+# ==========================================
+# .NET build artifacts
+# ==========================================
+
+[Bb]in/
+[Oo]bj/
+[Aa]rtifacts/
+[Dd]ebug/
+[Rr]elease/
+publish/
+out/
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+
+# Build files
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# ==========================================
+# IDE
+# ==========================================
+
+.vs/
+.idea/
+.vscode/
+
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.csproj.user
+
+# ==========================================
+# Avalonia
+# ==========================================
+
+# Generated Avalonia resources are inside obj/
+# and are already excluded above.
+
+# ==========================================
+# Tests and coverage
+# ==========================================
+
+TestResults/
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# ==========================================
+# Operating systems
+# ==========================================
+
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==========================================
+# Temporary files and backups
+# ==========================================
+
+*.tmp
+*.temp
+*.bak
+*~
+
+# ==========================================
+# Logs
+# ==========================================
+
+logs/

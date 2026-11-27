@@ -93,7 +93,6 @@ public partial class MainWindow : Window
 
                 check.IsCheckedChanged += (_, _) =>
                 {
-                    // Реакция на изменение состояния.
                 };
 
                 return check;

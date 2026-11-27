@@ -1,3 +1,4 @@
+
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,12 +9,6 @@
         x:Key="{x:Type controls:Calendar}"
         TargetType="controls:Calendar">
 
-        <Setter Property="CalendarBackground" Value="#FFFFFF"/>
-        <Setter Property="CalendarBorderBrush" Value="#D1D5DB"/>
-        <Setter Property="CalendarBorderThickness" Value="1"/>
-
-        <Setter Property="CornerRadius" Value="12"/>
-
         <Setter Property="Template">
             <ControlTemplate>
 
@@ -23,91 +18,85 @@
                     BorderThickness="{TemplateBinding CalendarBorderThickness}"
                     CornerRadius="{TemplateBinding CornerRadius}">
 
-                    <Grid >
+                    <Grid RowDefinitions="Auto,Auto,*">
+                        <Border
+                            Grid.Row="0"
+                            Height="{TemplateBinding CalendarTopBorderThickness}"
+                            Background="{TemplateBinding CalendarTopBorderBrush}"
+                            CornerRadius="12,12,0,0"/>
+
+                        <Border
+                            x:Name="PART_Header"
+                            Grid.Row="1"
+                            Background="{TemplateBinding HeaderBackground}"
+                            Padding="12,8">
+
+                            <Grid ColumnDefinitions="40,*,40">
+                                <Border
+                                    x:Name="PART_PreviousButton"
+                                    Grid.Column="0"
+                                    Background="Transparent"
+                                    CornerRadius="6"
+                                    Padding="6"
+                                    Focusable="True"
+                                    Cursor="Hand">
+
+                                    <TextBlock
+                                        x:Name="PART_PreviousGlyph"
+                                        Text="‹"
+                                        FontSize="{TemplateBinding NavigationFontSize}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+
+                                </Border>
+
+                                <TextBlock
+                                    x:Name="PART_MonthTitle"
+                                    Grid.Column="1"
+                                    FontSize="{TemplateBinding MonthTitleFontSize}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+
+                                <Border
+                                    x:Name="PART_NextButton"
+                                    Grid.Column="2"
+                                    Background="Transparent"
+                                    CornerRadius="6"
+                                    Padding="6"
+                                    Focusable="True"
+                                    Cursor="Hand">
+
+                                    <TextBlock
+                                        x:Name="PART_NextGlyph"
+                                        Text="›"
+                                        FontSize="{TemplateBinding NavigationFontSize}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+
+                                </Border>
+
+                            </Grid>
+
+                        </Border>
+
                         <Grid
-    RowDefinitions="Auto,*">
+                            Grid.Row="2"
+                            Margin="12,4,12,12"
+                            RowDefinitions="Auto,*">
 
-    <Border
-        x:Name="PART_Header"
-        Grid.Row="0"
-        Background="{TemplateBinding HeaderBackground}"
-        CornerRadius="12,12,0,0"
-        Padding="12,8">
+                            <primitives:UniformGrid
+                                x:Name="PART_Weekdays"
+                                Grid.Row="0"
+                                Columns="7"
+                                Rows="1"/>
 
-        <Grid ColumnDefinitions="40,*,40">
+                            <primitives:UniformGrid
+                                x:Name="PART_Days"
+                                Grid.Row="1"
+                                Columns="7"
+                                Rows="6"/>
 
-            <Button
-                x:Name="PART_PreviousButton"
-                Grid.Column="0"
-                Background="Transparent"
-                BorderThickness="0"
-                CornerRadius="6"
-                Padding="6"
-                Cursor="Hand">
-
-                <TextBlock
-                    x:Name="PART_PreviousGlyph"
-                    Text="‹"
-                    FontSize="{TemplateBinding NavigationFontSize}"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"/>
-
-            </Button>
-
-            <TextBlock
-                x:Name="PART_MonthTitle"
-                Grid.Column="1"
-                FontSize="{TemplateBinding MonthTitleFontSize}"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"/>
-
-            <Button
-                x:Name="PART_NextButton"
-                Grid.Column="2"
-                Background="Transparent"
-                BorderThickness="0"
-                CornerRadius="6"
-                Padding="6"
-                Cursor="Hand">
-
-                <TextBlock
-                    x:Name="PART_NextGlyph"
-                    Text="›"
-                    FontSize="{TemplateBinding NavigationFontSize}"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"/>
-
-            </Button>
-
-        </Grid>
-    </Border>
-
-    <!-- =====================================================
-         Тело: дни недели + дни месяца
-         ===================================================== -->
-    <Grid
-        Grid.Row="1"
-        Margin="12,4,12,12"
-        RowDefinitions="Auto,*"
-        RowSpacing="10">
-
-        <primitives:UniformGrid
-            x:Name="PART_Weekdays"
-            Grid.Row="0"
-            Columns="7"
-            Rows="1"/>
-
-        <primitives:UniformGrid
-            x:Name="PART_Days"
-            Grid.Row="1"
-            Columns="7"
-            Rows="6"
-            ColumnSpacing="4"
-            RowSpacing="4"/>
-
-    </Grid>
-
-</Grid>
+                        </Grid>
 
                     </Grid>
 

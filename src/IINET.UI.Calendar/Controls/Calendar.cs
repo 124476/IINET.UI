@@ -256,7 +256,6 @@ public class Calendar : TemplatedControl
         set => SetValue(CalendarBorderThicknessProperty, value);
     }
 
-
     public double NavigationFontSize
     {
         get => GetValue(NavigationFontSizeProperty);
